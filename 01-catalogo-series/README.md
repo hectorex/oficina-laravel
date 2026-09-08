@@ -1,58 +1,69 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📺 Catálogo de Séries
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Projeto criado durante o curso **[Laravel: Criando uma aplicação com MVC](https://cursos.alura.com.br/course/laravel-criando-aplicacao-mvc)** (Alura), parte do repositório de estudos [oficina-laravel](https://github.com/hectorex/oficina-laravel).
 
-## About Laravel
+Uma aplicação simples em Laravel que permite cadastrar séries de TV e listá-las em ordem alfabética.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✅ Status
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Curso concluído em 07/09/2026 — 100% de progresso, certificado emitido.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 Funcionalidades
 
-## Learning Laravel
+- Listagem de séries cadastradas, ordenadas alfabeticamente
+- Cadastro de novas séries via formulário
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🛠️ Tecnologias e conceitos aplicados
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **PHP 8 / Laravel** — estrutura MVC
+- **Controllers** — lógica de listagem e cadastro (`SeriesController`)
+- **Blade** — views, layout reutilizável via componente (`x-layout`) e slots
+- **Rotas** — GET/POST, incluindo proteção CSRF nos formulários
+- **Laravel Mix** — compilação de assets front-end (Sass)
+- **Bootstrap 5** — estilização das views (formulários, botões, listas)
+- **Eloquent ORM** — Model `Serie`, consultas com `orderBy`, `save()`
+- **Migrations** — versionamento da estrutura do banco de dados
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 📂 Estrutura relevante
 
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+```
+app/
+├── Http/Controllers/
+│   └── SeriesController.php
+├── Models/
+│   └── Serie.php
+resources/views/
+├── components/
+│   └── layout.blade.php
+└── series/
+    ├── index.blade.php
+    └── create.blade.php
+routes/
+└── web.php
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+## 🧠 Aprendizados
 
-## Contributing
+- Diferença entre montar HTML manualmente no Controller vs. usar Views (Blade)
+- Como funciona um componente Blade com `$slot` e props
+- Diferença entre `DB::` (query builder cru) e Eloquent (Model), e por que Eloquent é preferível na maioria dos casos
+- Configuração e resolução de conflitos entre Laravel Mix, Webpack e Node.js em ambientes com versões mais recentes
+- Importância do token `@csrf` em formulários POST
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## ▶️ Como rodar localmente
 
-## Code of Conduct
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+npm install --legacy-peer-deps
+npm run mix
+php artisan serve
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Acesse `http://localhost:8000/series`.
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Projeto de estudo — instrutor do curso: [Vinicius Dias](https://cursos.alura.com.br/user/cviniciussdias).
