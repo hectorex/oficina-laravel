@@ -24,6 +24,7 @@ class SeriesController extends Controller
 
     public function store(Request $request)
     {
+        
         $serie = Serie::create($request->all());
         return to_route('series.index')
         ->with('mensagem.sucesso', "Série '{$serie->nome}' adicionada com sucesso");
@@ -35,5 +36,20 @@ class SeriesController extends Controller
 
         return to_route('series.index')
         ->with('mensagem.sucesso', "Série '{$series->nome}' removida com sucesso");
+    }
+
+    public function edit(Serie $series)
+    {
+        return view('series.edit')->with('serie', $series);
+    }
+
+    public function update(Serie $series, Request $request)
+    {   
+        $old_name = $series->nome;
+        $series->fill($request->all());
+        $series->save();
+
+        return to_route('series.index')
+            ->with('mensagem.sucesso', "Série '{$old_name}' atualizada para '{$series->nome}'  com sucesso");
     }
 }
